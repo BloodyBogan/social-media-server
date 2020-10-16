@@ -6,7 +6,6 @@ const {
   validateRegisterInput,
   validateLoginInput,
 } = require('../../utils/validators');
-const { SECRET_KEY } = require('../../config/config');
 const User = require('../../models/User.model');
 
 function generateToken(user) {
@@ -16,7 +15,7 @@ function generateToken(user) {
       email: user.email,
       username: user.username,
     },
-    SECRET_KEY,
+    process.env.SECRET_KEY,
     { expiresIn: '1h' }
   );
 }
